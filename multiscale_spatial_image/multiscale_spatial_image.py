@@ -1,14 +1,13 @@
 from typing import Union
 
-from datatree import DataTree
 import numpy as np
 from collections.abc import MutableMapping
 from pathlib import Path
 from zarr.storage import BaseStore
-from datatree import register_datatree_accessor
+import xarray as xr
 
 
-@register_datatree_accessor("msi")
+@xr.register_datatree_accessor("msi")
 class MultiscaleSpatialImage:
     """A multi-scale representation of a spatial image.
 
@@ -24,7 +23,7 @@ class MultiscaleSpatialImage:
       scale2
     """
 
-    def __init__(self, xarray_obj: DataTree):
+    def __init__(self, xarray_obj: xr.DataTree):
         self._dt = xarray_obj
 
     def to_zarr(
@@ -52,7 +51,7 @@ class MultiscaleSpatialImage:
             ``{"scale0/image": {"my_variable": {"dtype": "int16", "scale_factor": 0.1}, ...}, ...}``.
             See ``xarray.Dataset.to_zarr`` for available options.
         kwargs :
-            Additional keyword arguments to be passed to ``datatree.DataTree.to_zarr``
+            Additional keyword arguments to be passed to ``xarray.DataTree.to_zarr``
         """
 
         multiscales = []

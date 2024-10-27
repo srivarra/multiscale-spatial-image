@@ -5,8 +5,7 @@ import urllib3
 from referencing import Registry, Resource
 from jsonschema import Draft202012Validator
 
-from datatree import DataTree
-
+import xarray as xr
 from multiscale_spatial_image import to_multiscale, MultiscaleSpatialImage
 from spatial_image import to_spatial_image
 import numpy as np
@@ -28,7 +27,7 @@ def load_schema(version: str = "0.4", strict: bool = False) -> Dict:
     return schema
 
 
-def check_valid_ngff(multiscale: DataTree):
+def check_valid_ngff(multiscale: xr.DataTree):
     store = zarr.storage.MemoryStore(dimension_separator="/")
     assert isinstance(multiscale.msi, MultiscaleSpatialImage)
     multiscale.msi.to_zarr(store, compute=True)

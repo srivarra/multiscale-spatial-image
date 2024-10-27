@@ -192,7 +192,8 @@ We use the standard [GitHub flow].
 [Xarray]: https://xarray.pydata.org/en/stable/
 [OME-NGFF]: https://ngff.openmicroscopy.org/
 [Dataset]: https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html
-[Datatree]: https://xarray-datatree.readthedocs.io/en/latest/
+[Datatree]:
+  https://docs.xarray.dev/en/stable/generated/xarray.DataTree.html#xarray.DataTree
 [DataArray]: https://xarray.pydata.org/en/stable/generated/xarray.DataArray.html
 [Zarr]: https://zarr.readthedocs.io/en/stable/
 [Dask]: https://docs.dask.org/en/stable/array.html

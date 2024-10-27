@@ -4,7 +4,7 @@ from enum import Enum
 from spatial_image import SpatialImage  # type: ignore
 
 
-from datatree import DataTree
+import xarray as xr
 
 from ._xarray import _downsample_xarray_coarsen
 from ._itk import (
@@ -39,7 +39,7 @@ def to_multiscale(
             Mapping[Any, Union[None, int, Tuple[int, ...]]],
         ]
     ] = None,
-) -> DataTree:
+) -> xr.DataTree:
     """\
     Generate a multiscale representation of a spatial image.
 
@@ -71,7 +71,7 @@ def to_multiscale(
     Returns
     -------
 
-    result : DataTree
+    result : xr.DataTree
         Multiscale representation. An xarray DataTree where each node is a SpatialImage Dataset
         named by the integer scale.  Increasing scales are downscaled versions of the input image.
     """
@@ -184,6 +184,6 @@ def to_multiscale(
             label="mode",
         )
 
-    multiscale = DataTree.from_dict(d=data_objects)
+    multiscale = xr.DataTree().from_dict(data_objects)
 
     return multiscale

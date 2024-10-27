@@ -3,7 +3,7 @@ from typing import Union, Sequence, List, Optional, Dict, Mapping, Any, Tuple
 from spatial_image import to_spatial_image
 
 from .to_multiscale import to_multiscale, Methods
-from datatree import DataTree
+import xarray as xr
 
 
 def itk_image_to_multiscale(
@@ -22,7 +22,7 @@ def itk_image_to_multiscale(
             Mapping[Any, Union[None, int, Tuple[int, ...]]],
         ]
     ] = None,
-) -> DataTree:
+) -> xr.DataTree:
     import itk
     import numpy as np
 
